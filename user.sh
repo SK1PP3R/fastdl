@@ -57,8 +57,8 @@ if [[ "$SSL" == "true" ]]; then
 </VirtualHost>
 <VirtualHost *:443>
     ServerName $SERVERNAME
-    DocumentRoot /var/www/html
-    <Directory /var/www/html>
+    DocumentRoot /var/www
+    <Directory /var/www>
         Options $OPTIONS
         AllowOverride $ALLOW_OVERRIDE
         Require all granted
@@ -77,8 +77,8 @@ else
   cat <<EOF > "$CONFIG_FILE"
 <VirtualHost *:80>
     ServerName $SERVERNAME
-    DocumentRoot /var/www/html
-    <Directory /var/www/html>
+    DocumentRoot /var/www
+    <Directory /var/www>
         Options $OPTIONS
         AllowOverride $ALLOW_OVERRIDE
         Require all granted
