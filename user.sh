@@ -38,7 +38,7 @@ else
 fi
 
 # Konfigurieren Sie die SSL-Zertifikats- und Schlüsseldateien basierend auf der Umgebungsvariable $SSL_PATH
-if [[ "$SSL" == "true" ]]; then
+if [[ "$SSL" == true ]]; then
   SSL_CERT_FILE="$SSL_PATH/$SERVERNAME.cert.pem"
   SSL_KEY_FILE="$SSL_PATH/$SERVERNAME.privkey.pem"
 else
@@ -47,7 +47,7 @@ else
 fi
 
 # Erstellen Sie einen VirtualHost mit Port 80 und Weiterleitung auf HTTPS, wenn SSL aktiviert ist
-if [[ "$SSL" == "true" ]]; then
+if [[ "$SSL" == true ]]; then
   cat <<EOF > "$CONFIG_FILE"
 <IfModule mod_ssl.c>
 <VirtualHost *:80>
