@@ -9,12 +9,6 @@ fi
 # Lesen Sie den Servernamen aus der Umgebungsvariable $SERVERNAME
 SERVERNAME=$SERVERNAME
 
-# Überprüfen Sie, ob der Servername leer ist
-if [[ -z "$SERVERNAME" ]]; then
-  echo "ERROR: Environment variable SERVERNAME is not set."
-  exit 1
-fi
-
 # Lesen Sie den SSL-Flag aus der Umgebungsvariable $SSL
 SSL=${SSL:-false}
 
