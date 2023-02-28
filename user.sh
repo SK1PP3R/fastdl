@@ -52,11 +52,13 @@ if [[ "$SSL" == "true" ]]; then
 <IfModule mod_ssl.c>
 <VirtualHost *:80>
     ServerName $SERVERNAME
+    ServerAlias *.$SERVERNAME
     RewriteEngine On
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </VirtualHost>
 <VirtualHost *:443>
     ServerName $SERVERNAME
+    ServerAlias *.$SERVERNAME
     DocumentRoot /var/www
     <Directory /var/www>
         Options $OPTIONS
@@ -77,6 +79,7 @@ else
   cat <<EOF > "$CONFIG_FILE"
 <VirtualHost *:80>
     ServerName $SERVERNAME
+    ServerAlias *.$SERVERNAME
     DocumentRoot /var/www
     <Directory /var/www>
         Options $OPTIONS
