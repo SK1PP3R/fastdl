@@ -89,4 +89,5 @@ else
 EOF
   echo "Configuration file created: $CONFIG_FILE (Port 80)"
 fi
+chown -R www:www /ark/ /home/steam/
 tail -f /var/log/apache2/error.log
