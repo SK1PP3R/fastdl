@@ -25,7 +25,7 @@ INDEXES=${INDEXES:-true}
 SSL_PATH=${SSL_PATH:-/etc/apache2/ssl}
 
 # Pfad zur Konfigurationsdatei erstellen
-CONFIG_FILE="/etc/apache2/sites-available/$SERVERNAME.conf"
+CONFIG_FILE="/etc/apache2/sites-available/000-default.conf"
 
 # Überprüfen, ob die Konfigurationsdatei bereits existiert
 if [[ -e "$CONFIG_FILE" ]]; then
