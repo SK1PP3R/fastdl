@@ -1,9 +1,9 @@
 #!/bin/bash
-if [ ! "$(id -u www)" -eq "$UID" ]; then 
-        usermod -o -u "$UID" www ; 
+if [ ! "$(id -u steam)" -eq "$UID" ]; then 
+        usermod -o -u "$UID" steam ; 
 fi
-if [ ! "$(id -g www)" -eq "$GID" ]; then 
-        groupmod -o -g "$GID" www ; 
+if [ ! "$(id -g steam)" -eq "$GID" ]; then 
+        groupmod -o -g "$GID" steam ; 
 fi
 
 # Lesen Sie den Servernamen aus der Umgebungsvariable $SERVERNAME
@@ -89,5 +89,5 @@ else
 EOF
   echo "Configuration file created: $CONFIG_FILE (Port 80)"
 fi
-chown -R www:www /ark/ /home/steam/
+chown -R steam:steam /var/www
 tail -f /var/log/apache2/error.log
