@@ -22,14 +22,14 @@ SSL_PATH="${SSL_PATH:-/etc/apache2/ssl}"
 CONFIG_FILE="/etc/apache2/sites-available/000-default.conf"
 
 # Überprüfen, ob die Konfigurationsdatei bereits existiert
-if [[ -e "$CONFIG_FILE" ]]; then
+if [ -e "$CONFIG_FILE" ]; then
   echo "Configuration file already exists: $CONFIG_FILE"
   echo "Deleting existing configuration file..."
   rm "$CONFIG_FILE"
 fi
 
 # Konfigurieren Sie den Options- und AllowOverride-Wert basierend auf der Umgebungsvariable $INDEXES
-if [[ "$INDEXES" == "false" ]]; then
+if [ "$INDEXES" = "false" ]; then
   OPTIONS="-Indexes"
   ALLOW_OVERRIDE="None"
 else
@@ -38,7 +38,7 @@ else
 fi
 
 # Konfigurieren Sie die SSL-Zertifikats- und Schlüsseldateien basierend auf der Umgebungsvariable $SSL_PATH
-if [[ "$SSL_ENABLED" == "true" ]]; then
+if [ "$SSL_ENABLED" = true ]; then
   SSL_CERT_FILE="$SSL_PATH/$SERVERNAME.cert.pem"
   SSL_KEY_FILE="$SSL_PATH/$SERVERNAME.privkey.pem"
 else
@@ -47,7 +47,7 @@ else
 fi
 
 # Erstellen Sie einen VirtualHost mit Port 80 und Weiterleitung auf HTTPS, wenn SSL aktiviert ist
-if [[ "$SSL_ENABLED" == "true" ]]; then
+if [ "$SSL_ENABLED" = true ]; then
   cat <<EOF > "$CONFIG_FILE"
 <IfModule mod_ssl.c>
 <VirtualHost *:80>
