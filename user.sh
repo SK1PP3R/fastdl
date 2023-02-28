@@ -29,7 +29,7 @@ if [ -e "$CONFIG_FILE" ]; then
 fi
 
 # Konfigurieren Sie den Options- und AllowOverride-Wert basierend auf der Umgebungsvariable $INDEXES
-if [ "$INDEXES" = "false" ]; then
+if [ "$INDEXES" = false ]; then
   OPTIONS="-Indexes"
   ALLOW_OVERRIDE="None"
 else
