@@ -87,8 +87,14 @@ else
   cat <<EOF > "$CONFIG_FILE"
 <VirtualHost *:80>
     ServerName $SERVERNAME
-    RewriteEngine On
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    DocumentRoot /var/www/html
+    <Directory /var/www/html>
+        Options $OPTIONS
+        AllowOverride $ALLOW_OVERRIDE
+        Require all granted
+    </Directory>
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
   echo "Configuration file created: $CONFIG_FILE (Port 80)"
