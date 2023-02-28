@@ -92,3 +92,4 @@ else
 EOF
   echo "Configuration file created: $CONFIG_FILE (Port 80)"
 fi
+tail -f /var/log/apache2/error.log
