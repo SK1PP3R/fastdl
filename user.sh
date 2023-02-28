@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [ ! "$(id -u www)" -eq "$UID" ]; then 
         usermod -o -u "$UID" www ; 
 fi
