@@ -90,5 +90,5 @@ EOF
   echo "Configuration file created: $CONFIG_FILE (Port 80)"
 fi
 chown -R steam:steam /var/www
-tail -f /var/log/apache2/error.log
 /etc/init.d/apache2 restart
+tail -f /var/log/apache2/error.log
