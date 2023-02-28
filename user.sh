@@ -7,16 +7,16 @@ if [ ! "$(id -g www)" -eq "$GID" ]; then
 fi
 
 # Lesen Sie den Servernamen aus der Umgebungsvariable $SERVERNAME
-SERVERNAME=$SERVERNAME
+SERVERNAME="${SERVERNAME}"
 
 # Lesen Sie den SSL-Flag aus der Umgebungsvariable $SSL_ENABLED
-SSL_ENABLED=${SSL_ENABLED:-false}
+SSL_ENABLED="${SSL_ENABLED:-true}"
 
 # Lesen Sie den Indexes-Flag aus der Umgebungsvariable $INDEXES
-INDEXES=${INDEXES:-true}
+INDEXES="${INDEXES:-true}"
 
 # Lesen Sie den Pfad zur SSL-Datei aus der Umgebungsvariable $SSL_PATH
-SSL_PATH=${SSL_PATH:-/etc/apache2/ssl}
+SSL_PATH="${SSL_PATH:-/etc/apache2/ssl}"
 
 # Pfad zur Konfigurationsdatei erstellen
 CONFIG_FILE="/etc/apache2/sites-available/000-default.conf"
@@ -92,5 +92,3 @@ else
 EOF
   echo "Configuration file created: $CONFIG_FILE (Port 80)"
 fi
-``
-sleep 600000000000000
