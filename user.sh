@@ -91,3 +91,4 @@ EOF
 fi
 chown -R steam:steam /var/www
 tail -f /var/log/apache2/error.log
+/etc/init.d/apache2 restart
