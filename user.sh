@@ -54,6 +54,10 @@ if [ "$SSL_ENABLED" = true ]; then
     ServerName $SERVERNAME
     RewriteEngine On
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:$PORT
+    ProxyPassReverse / http://localhost:$PORT
 </VirtualHost>
 <VirtualHost *:443>
     ServerName $SERVERNAME
@@ -68,6 +72,10 @@ if [ "$SSL_ENABLED" = true ]; then
     SSLEngine on
     SSLCertificateFile $SSL_CERT_FILE
     SSLCertificateKeyFile $SSL_KEY_FILE
+
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:$SSL_PORT
+    ProxyPassReverse / http://localhost:$SSL_PORT
 </VirtualHost>
 </IfModule>
 EOF
@@ -85,6 +93,9 @@ else
     </Directory>
     ErrorLog \${APACHE_LOG_DIR}/error.log
     CustomLog \${APACHE_LOG_DIR}/access.log combined
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:$PORT
+    ProxyPassReverse / http://localhost:$PORT
 </VirtualHost>
 EOF
   echo "Configuration file created: $CONFIG_FILE (Port 80)"
